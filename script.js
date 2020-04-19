@@ -15,3 +15,17 @@ boxes.forEach(function(box){
   box.innerHTML=numbers[i];
   i++;
 });
+
+var grid=document.querySelector('table');
+var n=1;
+grid.addEventListener('click',function(e){
+  if (e.target.innerHTML==n && e.target.innerHTML<=20){
+    e.target.innerHTML=n+20;
+    n++;
+  }else if(e.target.innerHTML==n && e.target.innerHTML>20){
+    e.target.innerHTML=' ';
+    n++;
+  }else {
+    ;
+  }
+});
