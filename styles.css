@@ -51,3 +51,8 @@ td{
   font-size: 50px;
   text-align: center;
 }
+.final-time, .restart-msg{
+  display:none;
+  text-align: center;
+  font-size: 50px;
+}

@@ -48,3 +48,25 @@ function end(){
   countdownNumber.style.display='none';
   gridtest.style.display='table';
 }
+
+var p=0;
+var timeInSeconds=document.querySelector('.seconds');
+var bestInSeconds=document.querySelector('.best-seconds');
+var restartMsg=document.querySelector('.restart-msg');
+var finalTime=document.querySelector('.final-time');
+setTimeout(function(){
+  var testtimer=setInterval(function(){
+    if (n<41){
+      var variable=performance.now()-3000;
+      timeInSeconds.innerHTML=(variable/1000).toFixed(2);
+
+    }else{
+      bestInSeconds.innerHTML=timeInSeconds.innerHTML;
+      finalTime.innerHTML=timeInSeconds.innerHTML;
+      clearInterval(testtimer);
+      gridtest.style.display='none';
+      restartMsg.style.display='block';
+      finalTime.style.display='block';
+    }
+  },10);
+},3000);
