@@ -29,3 +29,22 @@ grid.addEventListener('click',function(e){
     ;
   }
 });
+
+var count=2;
+var gridtest=document.querySelector('table');
+gridtest.style.display='none';
+var countdownNumber=document.querySelector('.countd');
+var countdown=setInterval(function(){
+  if (count===0){
+    clearInterval(countdown);
+    end();
+  } else{
+    countdownNumber.innerHTML=count;
+    count--;
+  }
+},1000);
+
+function end(){
+  countdownNumber.style.display='none';
+  gridtest.style.display='table';
+}
