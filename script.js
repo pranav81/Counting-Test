@@ -4,8 +4,11 @@ var numbers=[];
 for(var i=1; i<=20; i++){
   numbers.push(i);
 }
+
 var trialNo=0
+
 action();
+
 function action(){
 
   for(var i=numbers.length-1; i>0; i--) {
@@ -14,6 +17,7 @@ function action(){
   }
 
   var i=0;
+
   boxes.forEach(function(box){
     box.innerHTML=numbers[i];
     i++;
@@ -21,6 +25,7 @@ function action(){
 
   var grid=document.querySelector('table');
   var n=1;
+
   grid.addEventListener('click',function(e){
     if (e.target.innerHTML==n && e.target.innerHTML<=20){
       e.target.innerHTML=n+20;
@@ -33,8 +38,6 @@ function action(){
     }
   });
 
-
-  //var gridtest=document.querySelector('table');
   grid.style.display='none';
   var countdownNumber=document.querySelector('.countd');
   var timeInSeconds=document.querySelector('.seconds');
@@ -43,8 +46,14 @@ function action(){
   var finalTime=document.querySelector('.final-time');
   var restartBtn=document.querySelector('.restart-btn');
   var count=2;
+
   countdownNumber.style.display='block';
+  restartMsg.style.display='none';
+  finalTime.style.display='none';
+  restartBtn.style.display='none';
+
   countdownNumber.innerHTML=3;
+
   var countdown=setInterval(function(){
     if (count===0){
       clearInterval(countdown);
@@ -64,13 +73,9 @@ function action(){
   }
 
   var p=0;
-  /*var timeInSeconds=document.querySelector('.seconds');
-  var bestInSeconds=document.querySelector('.best-seconds');
-  var restartMsg=document.querySelector('.restart-msg');
-  var finalTime=document.querySelector('.final-time');
-  var restartBtn=document.querySelector('.restart-btn');*/
 
   var timevar=performance.now();
+
   setTimeout(function(){
     var timerset=setInterval(function(){
       if (n<41){
@@ -86,8 +91,11 @@ function action(){
             bestInSeconds.innerHTML=result;
           }
         }
+
         finalTime.innerHTML=result;
+
         clearInterval(timerset);
+
         grid.style.display='none';
         restartMsg.style.display='block';
         finalTime.style.display='block';
