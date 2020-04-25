@@ -1,12 +1,15 @@
-var boxes=document.querySelectorAll('td');
+var boxes=document.querySelectorAll('.number-grid td');
 var numbers=[];                                 //Array to store the numbers 1-20
-
+var bestboxes=document.querySelectorAll('.best-scores td');   //To show the top 5 scores
 for(var i=1; i<=20; i++){
   numbers.push(i);
 }
 
 var trialNo=0                     //Used to set the value of BEST after the first trial automatically
                                   //For subsequent trials, BEST will be set if TIME is lower than BEST
+
+var bestArray=[]                  //Used to store the top 5 scores
+
 
 action();                         //Function to be run everytime the user wants to play
                                   //This call initiates the game for the first time
@@ -96,6 +99,33 @@ function action(){
         }
 
         finalTime.innerHTML=result;
+
+        if (bestArray.length<=4){               //For the first 5 trials, add score to the bestArray
+          bestArray.push(result)
+          bestArray.sort();
+        }else{
+
+          if(result<bestArray[4]){         //For the subsequent trials, check before updating bestArray
+
+            bestArray.push(result);
+            bestArray.sort();
+            bestArray.pop();
+          }
+
+
+        }
+
+        localStorage.setItem('ScoreTable', JSON.stringify(bestArray));    //Storing the top scores
+        var bestScoresString=localStorage.getItem('ScoreTable');
+
+        var bestScoresArray=JSON.parse(bestScoresString);
+
+        var scorecount=0;
+        bestScoresArray.forEach(function(){                        //Setting values to the TOP SCORES table
+          bestboxes[scorecount].innerHTML=bestScoresArray[scorecount];
+          scorecount++;
+        });
+
 
         clearInterval(timerset);                 //Once game is over, clear the interval set for the time
 

@@ -42,7 +42,7 @@ table{
   border-spacing: 5px;
 }
 
-td{
+.number-grid td{
   width: 60px;
   height: 60px;
   background-color: black;
@@ -51,6 +51,17 @@ td{
   text-align: center;
   color: white;
   padding: 5px;
+}
+
+.best-scores td{
+  width: 40px;
+  height: 40px;
+  background-color: black;
+  border: 4px solid #00ff1f;
+  border-radius: 4px;
+  text-align: center;
+  color: white;
+  padding: 4px;
 }
 
 .countd{
@@ -69,10 +80,22 @@ td{
 }
 
 @media (max-width: 500px){
-  td{
+  .number-grid td{
     width: 50px;
     height: 50px;
     padding: 3px;
+  }
+  .best-scores td{
+    width: 30px;
+    height: 30px;
+    border: 3px solid #00ff1f;
+    border-radius: 4px;
+    padding: 2px;
+    font-size: 10px;
+
+  }
+  .best-scores{
+    border: none;
   }
   .timer, .best-time{
     font-size: 35px;
@@ -80,7 +103,7 @@ td{
 }
 
 @media (max-width: 400px){
-  td{
+  .number-grid td{
     width: 40px;
     height: 40px;
     padding: 2px;
@@ -93,6 +116,7 @@ td{
     border-spacing: 2px;
     padding: 3px;
   }
+
 }
 
 @media (max-width: 350px){
@@ -104,11 +128,14 @@ td{
 }
 
 @media (max-width: 300px){
-  td{
+  .number-grid td{
     width: 30px;
     height: 30px;
     padding: 2px;
     border: 3px solid #00ff1f;
+  }
+  th{
+    font-size: 10px;
   }
   .timer, .best-time{
     font-size: 20px;
@@ -120,7 +147,7 @@ td{
     border-spacing: 1px;
     padding: 2px;
   }
-  td{
+  .number-grid td{
     width: 25px;
     height: 25px;
     border: 2px solid #00ff1f;
