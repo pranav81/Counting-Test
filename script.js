@@ -22,27 +22,56 @@ function action(){
     [numbers[i], numbers[j]] = [numbers[j], numbers[i]];
   }
 
-  var i=0;
-
+  var i=0; 
   boxes.forEach(function(box){                      //Contents of numbers[] are set to boxes in the grid
     box.innerHTML=numbers[i];                       //The boxes now contain 1-20 in random order
     i++;
+    if(box.innerHTML<=5){
+      box.style.background='rgb(0,0,255)';
+    }
+    else if(box.innerHTML<=10){
+      box.style.background='rgb(0,0,230)';
+    }
+    else if(box.innerHTML<=15){
+      box.style.background='rgb(0,0,205)';
+    }
+    else if(box.innerHTML<=20){
+      box.style.background='rgb(0,0,180)';
+    }
+       
   });
 
   var grid=document.querySelector('table');
   var n=1;                                          //n is just a counting variable
 
   grid.addEventListener('click',function(e){
+    
     if (e.target.innerHTML==n && e.target.innerHTML<=20){       //If number inside the box is <=20,
+      
       e.target.innerHTML=n+20;                                  //increase the value by 20
       n++;
+      if(n<7){
+        e.target.style.background='rgb(0,0,155)';
+      }
+      else if(n<12){
+        e.target.style.background='rgb(0,0,130)';
+      }
+      else if(n<17){
+        e.target.style.background='rgb(0,0,105)';
+      }
+      else{
+        e.target.style.background='rgb(0,0,80)';
+      }
     }else if(e.target.innerHTML==n && e.target.innerHTML>20){   //If number inside the box is >20
       e.target.innerHTML=' ';                                   //Change the content to nothing
       n++;
+      e.target.style.background='rgb(0,0,55)';
     }else {
       ;
     }                                                           // By the end of this loop, n=41
   });
+
+  
 
   grid.style.display='none';                                //Hiding the table initially to show countdown
   var countdownNumber=document.querySelector('.countd');
